@@ -6,7 +6,6 @@
 <title>🎧 RADIO CANNAFEST™ | En Vivo 24hs</title>
 
 <link rel="icon" type="image/png" href="https://iili.io/fzEhgnt.jpg">
-
 <meta property="og:title" content="RADIO CANNAFEST™ | En Vivo 24hs">
 <meta property="og:description" content="🎵 Música, cultura y vibra 420 en vivo.">
 <meta property="og:image" content="https://iili.io/fzEhgnt.jpg">
@@ -25,7 +24,7 @@ body{
   overflow-x:hidden;
 }
 
-/* HUMO VERDE SUAVE */
+/* HUMO VERDE ANIMADO */
 body::after{
   content:"";
   position:fixed;
@@ -35,10 +34,7 @@ body::after{
   animation:smokeMove 25s linear infinite;
   z-index:-1;
 }
-@keyframes smokeMove{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(-300px)}
-}
+@keyframes smokeMove{0%{transform:translateY(0)}100%{transform:translateY(-300px)}}
 
 /* TOP INFO */
 .top-info{
@@ -49,18 +45,10 @@ body::after{
   border-radius:15px;
   box-shadow:0 0 20px #00ff88;
 }
-.clima-line{
-  font-size:1.1em;
-  color:#00ff99;
-  text-shadow:0 0 10px #00ff99;
-}
-.hora-line{
-  font-size:1em;
-  color:#fff;
-  opacity:.85;
-}
+.clima-line{font-size:1.1em;color:#00ff99;text-shadow:0 0 10px #00ff99}
+.hora-line{font-size:1em;color:#fff;opacity:.85}
 
-/* LOGO CON GLOW 420 */
+/* LOGO CON GLOW */
 .logo{
   width:220px;
   margin:10px auto;
@@ -74,20 +62,17 @@ body::after{
   100%{filter:drop-shadow(0 0 8px #00ff99)}
 }
 
-/* TÍTULO CON GLOW VERDE */
+/* TÍTULO */
 .title{
   font-size:2.8em;
   font-weight:700;
   color:#00ffcc;
-  text-shadow:0 0 20px #00ff88, 0 0 40px #00ffaa;
+  text-shadow:0 0 20px #00ff88,0 0 40px #00ffaa;
   animation:titleGlow 4s infinite alternate;
 }
-@keyframes titleGlow{
-  from{opacity:.85}
-  to{opacity:1}
-}
+@keyframes titleGlow{from{opacity:.85}to{opacity:1}}
 
-/* EN VIVO ELECTRO */
+/* EN VIVO */
 .en-vivo{
   display:inline-flex;
   align-items:center;
@@ -118,22 +103,21 @@ body::after{
  100%{transform:scale(.9);opacity:.6}
 }
 
-/* CAJA RADIO CON BORDE NEÓN */
+/* CAJA RADIO */
 .radio-box{
   background:rgba(0,0,0,.75);
   padding:40px 30px;
   border-radius:25px;
   max-width:650px;
   margin:30px auto;
-  position:relative;
   box-shadow:0 0 30px #00ff99;
   border:2px solid rgba(0,255,150,0.4);
   animation:borderPulse 3s infinite ease-in-out;
 }
-@keyframes borderPulse {
-  0% {box-shadow:0 0 18px #00ff99;}
-  50% {box-shadow:0 0 35px #00ff99;}
-  100% {box-shadow:0 0 18px #00ff99;}
+@keyframes borderPulse{
+  0%{box-shadow:0 0 18px #00ff99}
+  50%{box-shadow:0 0 35px #00ff99}
+  100%{box-shadow:0 0 18px #00ff99}
 }
 
 /* OYENTES */
@@ -147,10 +131,7 @@ body::after{
   text-shadow:0 0 15px #00ffcc;
   animation:scroll 14s linear infinite;
 }
-@keyframes scroll{
- from{transform:translateX(100%)}
- to{transform:translateX(-100%)}
-}
+@keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
 
 /* BOTÓN PLAY */
 .play-btn{
@@ -166,33 +147,6 @@ body::after{
 }
 .play-btn:hover{transform:scale(1.08)}
 
-/* PLAYER */
-.player-box{display:none;margin-top:25px}
-.player-container{
-  width:100%;
-  max-width:450px;
-  margin:auto;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 0 25px #00ff99;
-}
-.player-container iframe{
-  width:100%;
-  height:240px;
-  border:none;
-}
-
-/* CERRAR */
-.close-btn{
-  margin-top:15px;
-  background:#ff0080;
-  padding:10px 20px;
-  border:none;
-  border-radius:10px;
-  color:#fff;
-  box-shadow:0 0 12px #ff0080;
-}
-
 /* INSTAGRAM */
 .insta-box{
   margin-top:50px;
@@ -202,11 +156,7 @@ body::after{
   background:rgba(0,0,0,.8);
   box-shadow:0 0 20px #ff00aa;
 }
-.insta-title{
-  font-size:1.8em;
-  color:#ff00aa;
-  margin-bottom:10px;
-}
+.insta-title{font-size:1.8em;color:#ff00aa;margin-bottom:10px}
 .insta-link{
   color:#fff;
   text-decoration:none;
@@ -215,11 +165,7 @@ body::after{
   align-items:center;
   gap:10px;
 }
-.insta-logo{
-  width:35px;
-  filter:drop-shadow(0 0 8px #ff00aa);
-}
-
+.insta-logo{width:35px;filter:drop-shadow(0 0 8px #ff00aa)}
 </style>
 </head>
 
@@ -247,14 +193,15 @@ body::after{
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
-  <button class="play-btn" onclick="abrirPlayer()">▶️ Escuchar en vivo</button>
+  <!-- AUDIO DIRECTO -->
+  <audio id="cannaAudio">
+    <source src="https://radioimagen76.radio12345.com/stream" type="audio/mpeg">
+  </audio>
 
-  <div class="player-box" id="playerBox">
-    <div class="player-container">
-      <iframe src="https://radioimagen76.radio12345.com/"></iframe>
-    </div>
-    <button class="close-btn" onclick="cerrarPlayer()">❌ Cerrar</button>
-  </div>
+  <!-- BOTÓN PLAY PREMIUM RECTANGULAR -->
+  <button class="play-btn" onclick="togglePlay()" id="playButton">
+    ▶️ Escuchar en vivo
+  </button>
 
 </div>
 
@@ -268,11 +215,17 @@ body::after{
 </div>
 
 <script>
-function abrirPlayer(){
-  document.getElementById("playerBox").style.display="block";
-}
-function cerrarPlayer(){
-  document.getElementById("playerBox").style.display="none";
+function togglePlay(){
+  let audio = document.getElementById('cannaAudio');
+  let btn = document.getElementById('playButton');
+
+  if(audio.paused){
+    audio.play();
+    btn.innerHTML = "⏸️ Pausar transmisión";
+  } else {
+    audio.pause();
+    btn.innerHTML = "▶️ Escuchar en vivo";
+  }
 }
 
 let oy = Math.floor(Math.random()*200)+420;
@@ -324,4 +277,4 @@ cargarClima();
 </script>
 
 </body>
-  </html>
+</html>
