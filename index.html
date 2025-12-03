@@ -6,10 +6,12 @@
 <title>🎧 RADIO CANNAFEST™ | En Vivo 24hs</title>
 
 <link rel="icon" type="image/png" href="https://iili.io/fzEhgnt.jpg">
+<link rel="shortcut icon" href="https://iili.io/fzEhgnt.jpg">
 
 <meta property="og:title" content="RADIO CANNAFEST™ | En Vivo 24hs">
-<meta property="og:description" content="🎵 Música, cultura y vibra 420 en vivo.">
+<meta property="og:description" content="🎵 Música, cultura y vibra 420 en vivo. 24 horas conectados.">
 <meta property="og:image" content="https://iili.io/fzEhgnt.jpg">
+<meta property="og:type" content="website">
 <meta name="theme-color" content="#00ff88">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght:300;400;600&family=Montserrat:wght:600;700&display=swap" rel="stylesheet">
@@ -18,36 +20,21 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:'Poppins',sans-serif;
-  background:url('https://iili.io/fzGgVlp.jpg') center/cover fixed no-repeat;
+  background:url('https://iili.io/fzGgVlp.jpg') center fixed no-repeat;
+  background-size:cover;
   color:#00ff99;
   text-align:center;
   padding:20px;
-  overflow-x:hidden;
 }
 
-/* HUMO VERDE SUAVE */
-body::after{
-  content:"";
-  position:fixed;
-  top:0;left:0;width:100%;height:100%;
-  background:url('https://iili.io/J97rbBu.png') repeat;
-  opacity:.18;
-  animation:smokeMove 25s linear infinite;
-  z-index:-1;
-}
-@keyframes smokeMove{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(-300px)}
-}
-
-/* TOP INFO */
+/* CONTENEDOR TOP - CLIMA / HORA */
 .top-info{
   max-width:600px;
-  margin:10px auto;
+  margin:10px auto 25px;
   padding:15px 20px;
   background:rgba(0,0,0,.6);
   border-radius:15px;
-  box-shadow:0 0 20px #00ff88;
+  box-shadow:0 0 15px #00ff88;
 }
 .clima-line{
   font-size:1.1em;
@@ -60,80 +47,56 @@ body::after{
   opacity:.85;
 }
 
-/* LOGO CON GLOW 420 */
+/* LOGO */
 .logo{
-  width:220px;
-  margin:10px auto;
+  width:200px;
+  margin:20px auto 10px;
   display:block;
-  filter:drop-shadow(0 0 15px #00ff99);
-  animation:logoPulse 4s infinite ease-in-out;
-}
-@keyframes logoPulse{
-  0%{filter:drop-shadow(0 0 8px #00ff99)}
-  50%{filter:drop-shadow(0 0 22px #00ff99)}
-  100%{filter:drop-shadow(0 0 8px #00ff99)}
+  filter:drop-shadow(0 0 10px #00ff99);
 }
 
-/* TÍTULO CON GLOW VERDE */
+/* TÍTULO */
 .title{
-  font-size:2.8em;
+  font-size:2.7em;
   font-weight:700;
-  color:#00ffcc;
-  text-shadow:0 0 20px #00ff88, 0 0 40px #00ffaa;
-  animation:titleGlow 4s infinite alternate;
-}
-@keyframes titleGlow{
-  from{opacity:.85}
-  to{opacity:1}
+  color:#00ff99;
+  text-shadow:0 0 20px #00ff99;
+  margin-top:10px;
 }
 
-/* EN VIVO ELECTRO */
+/* EN VIVO */
 .en-vivo{
   display:inline-flex;
   align-items:center;
   gap:6px;
-  background:rgba(255,0,0,.25);
+  background:rgba(255,0,0,.2);
   border:1px solid #ff0033;
-  padding:6px 18px;
+  padding:6px 14px;
   border-radius:25px;
-  color:#ff3355;
-  font-weight:700;
+  color:#ff0033;
+  font-family:'Montserrat';
+  font-weight:600;
   margin:12px auto;
-  box-shadow:0 0 12px #ff0033;
-  animation:shake 1.4s infinite ease-in-out;
-}
-@keyframes shake{
-  0%{transform:translateX(0)}
-  50%{transform:translateX(1px)}
-  100%{transform:translateX(0)}
 }
 .en-vivo .dot{
   width:10px;height:10px;border-radius:50%;
   background:#ff0033;
-  animation:pulse 1s infinite;
+  animation:pulse 1.2s infinite;
 }
 @keyframes pulse{
  0%{transform:scale(.9);opacity:.6}
- 50%{transform:scale(1.4);opacity:1}
+ 50%{transform:scale(1.3);opacity:1}
  100%{transform:scale(.9);opacity:.6}
 }
 
-/* CAJA RADIO CON BORDE NEÓN */
+/* CAJA RADIO */
 .radio-box{
   background:rgba(0,0,0,.75);
   padding:40px 30px;
   border-radius:25px;
   max-width:650px;
   margin:30px auto;
-  position:relative;
-  box-shadow:0 0 30px #00ff99;
-  border:2px solid rgba(0,255,150,0.4);
-  animation:borderPulse 3s infinite ease-in-out;
-}
-@keyframes borderPulse {
-  0% {box-shadow:0 0 18px #00ff99;}
-  50% {box-shadow:0 0 35px #00ff99;}
-  100% {box-shadow:0 0 18px #00ff99;}
+  box-shadow:0 0 25px #00ff99;
 }
 
 /* OYENTES */
@@ -143,8 +106,8 @@ body::after{
   display:inline-block;
   font-size:1.25em;
   font-weight:600;
-  color:#00ffcc;
-  text-shadow:0 0 15px #00ffcc;
+  color:#00ff99;
+  text-shadow:0 0 15px #00ff99;
   animation:scroll 14s linear infinite;
 }
 @keyframes scroll{
@@ -162,11 +125,9 @@ body::after{
   font-size:1.3em;
   color:#000;
   font-weight:600;
-  box-shadow:0 0 15px #00ff88;
 }
 .play-btn:hover{transform:scale(1.08)}
 
-/* PLAYER */
 .player-box{display:none;margin-top:25px}
 .player-container{
   width:100%;
@@ -174,7 +135,7 @@ body::after{
   margin:auto;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 0 25px #00ff99;
+  box-shadow:0 0 20px #00ff99;
 }
 .player-container iframe{
   width:100%;
@@ -182,15 +143,12 @@ body::after{
   border:none;
 }
 
-/* CERRAR */
 .close-btn{
   margin-top:15px;
   background:#ff0080;
   padding:10px 20px;
-  border:none;
-  border-radius:10px;
+  border:none;border-radius:10px;
   color:#fff;
-  box-shadow:0 0 12px #ff0080;
 }
 
 /* INSTAGRAM */
@@ -199,13 +157,16 @@ body::after{
   padding:25px 20px;
   border-radius:20px;
   max-width:600px;
-  background:rgba(0,0,0,.8);
+  background:rgba(0,0,0,.75);
+  margin-left:auto;
+  margin-right:auto;
   box-shadow:0 0 20px #ff00aa;
 }
 .insta-title{
   font-size:1.8em;
   color:#ff00aa;
   margin-bottom:10px;
+  font-family:'Montserrat';
 }
 .insta-link{
   color:#fff;
@@ -214,12 +175,12 @@ body::after{
   display:inline-flex;
   align-items:center;
   gap:10px;
+  margin-top:10px;
 }
 .insta-logo{
   width:35px;
   filter:drop-shadow(0 0 8px #ff00aa);
 }
-
 </style>
 </head>
 
