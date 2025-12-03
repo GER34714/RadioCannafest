@@ -6,6 +6,7 @@
 <title>🎧 RADIO CANNAFEST™ | En Vivo 24hs</title>
 
 <link rel="icon" type="image/png" href="https://iili.io/fzEhgnt.jpg">
+
 <meta property="og:title" content="RADIO CANNAFEST™ | En Vivo 24hs">
 <meta property="og:description" content="🎵 Música, cultura y vibra 420 en vivo.">
 <meta property="og:image" content="https://iili.io/fzEhgnt.jpg">
@@ -24,7 +25,7 @@ body{
   overflow-x:hidden;
 }
 
-/* HUMO VERDE ANIMADO */
+/* HUMO VERDE SUAVE */
 body::after{
   content:"";
   position:fixed;
@@ -34,7 +35,10 @@ body::after{
   animation:smokeMove 25s linear infinite;
   z-index:-1;
 }
-@keyframes smokeMove{0%{transform:translateY(0)}100%{transform:translateY(-300px)}}
+@keyframes smokeMove{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-300px)}
+}
 
 /* TOP INFO */
 .top-info{
@@ -45,10 +49,18 @@ body::after{
   border-radius:15px;
   box-shadow:0 0 20px #00ff88;
 }
-.clima-line{font-size:1.1em;color:#00ff99;text-shadow:0 0 10px #00ff99}
-.hora-line{font-size:1em;color:#fff;opacity:.85}
+.clima-line{
+  font-size:1.1em;
+  color:#00ff99;
+  text-shadow:0 0 10px #00ff99;
+}
+.hora-line{
+  font-size:1em;
+  color:#fff;
+  opacity:.85;
+}
 
-/* LOGO CON GLOW */
+/* LOGO CON GLOW 420 */
 .logo{
   width:220px;
   margin:10px auto;
@@ -67,12 +79,15 @@ body::after{
   font-size:2.8em;
   font-weight:700;
   color:#00ffcc;
-  text-shadow:0 0 20px #00ff88,0 0 40px #00ffaa;
+  text-shadow:0 0 20px #00ff88, 0 0 40px #00ffaa;
   animation:titleGlow 4s infinite alternate;
 }
-@keyframes titleGlow{from{opacity:.85}to{opacity:1}}
+@keyframes titleGlow{
+  from{opacity:.85}
+  to{opacity:1}
+}
 
-/* EN VIVO */
+/* EN VIVO ELECTRO */
 .en-vivo{
   display:inline-flex;
   align-items:center;
@@ -85,12 +100,6 @@ body::after{
   font-weight:700;
   margin:12px auto;
   box-shadow:0 0 12px #ff0033;
-  animation:shake 1.4s infinite ease-in-out;
-}
-@keyframes shake{
-  0%{transform:translateX(0)}
-  50%{transform:translateX(1px)}
-  100%{transform:translateX(0)}
 }
 .en-vivo .dot{
   width:10px;height:10px;border-radius:50%;
@@ -112,40 +121,39 @@ body::after{
   margin:30px auto;
   box-shadow:0 0 30px #00ff99;
   border:2px solid rgba(0,255,150,0.4);
-  animation:borderPulse 3s infinite ease-in-out;
-}
-@keyframes borderPulse{
-  0%{box-shadow:0 0 18px #00ff99}
-  50%{box-shadow:0 0 35px #00ff99}
-  100%{box-shadow:0 0 18px #00ff99}
 }
 
-/* OYENTES */
-.marquee-container{overflow:hidden;width:100%;margin-top:10px}
+/* MARQUEE */
+.marquee-container{
+  overflow:hidden;width:100%;margin-top:10px
+}
 .marquee{
-  white-space:nowrap;
-  display:inline-block;
-  font-size:1.25em;
-  font-weight:600;
-  color:#00ffcc;
-  text-shadow:0 0 15px #00ffcc;
+  white-space:nowrap;display:inline-block;
+  font-size:1.25em;font-weight:600;
+  color:#00ffcc;text-shadow:0 0 15px #00ffcc;
   animation:scroll 14s linear infinite;
 }
-@keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
-
-/* BOTÓN PLAY */
-.play-btn{
-  margin-top:20px;
-  background:linear-gradient(135deg,#00ff88,#00cc66);
-  padding:15px 50px;
-  border:none;
-  border-radius:50px;
-  font-size:1.3em;
-  color:#000;
-  font-weight:600;
-  box-shadow:0 0 15px #00ff88;
+@keyframes scroll{
+ from{transform:translateX(100%)}
+ to{transform:translateX(-100%)}
 }
-.play-btn:hover{transform:scale(1.08)}
+
+/* PLAY BUTTON (solo botón del iframe) */
+.player-container{
+  width:100%;
+  max-width:280px;
+  height:60px;          /* ← SOLO EL BOTÓN */
+  margin:25px auto 0;
+  overflow:hidden;
+  border-radius:15px;
+  box-shadow:0 0 18px #00ff99;
+}
+.player-container iframe{
+  width:100%;
+  height:200px;         /* recorte del player */
+  transform:translateY(-55px); /* se mueve para mostrar SOLO el botón */
+  border:none;
+}
 
 /* INSTAGRAM */
 .insta-box{
@@ -156,16 +164,14 @@ body::after{
   background:rgba(0,0,0,.8);
   box-shadow:0 0 20px #ff00aa;
 }
-.insta-title{font-size:1.8em;color:#ff00aa;margin-bottom:10px}
-.insta-link{
-  color:#fff;
-  text-decoration:none;
-  font-size:1.2em;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
+.insta-title{
+  font-size:1.8em;color:#ff00aa;margin-bottom:10px;
 }
-.insta-logo{width:35px;filter:drop-shadow(0 0 8px #ff00aa)}
+.insta-link{
+  color:#fff;text-decoration:none;font-size:1.2em;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.insta-logo{width:35px;filter:drop-shadow(0 0 8px #ff00aa);}
 </style>
 </head>
 
@@ -178,6 +184,7 @@ body::after{
   <div class="hora-line" id="fecha"></div>
 </div>
 
+<!-- RADIO BOX -->
 <div class="radio-box">
 
   <img src="https://iili.io/fzEhgnt.jpg" class="logo">
@@ -193,15 +200,10 @@ body::after{
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
-  <!-- AUDIO DIRECTO -->
-  <audio id="cannaAudio">
-    <source src="https://radioimagen76.radio12345.com/stream" type="audio/mpeg">
-  </audio>
-
-  <!-- BOTÓN PLAY PREMIUM RECTANGULAR -->
-  <button class="play-btn" onclick="togglePlay()" id="playButton">
-    ▶️ Escuchar en vivo
-  </button>
+  <!-- BOTÓN PLAY OFICIAL RECORTADO -->
+  <div class="player-container">
+    <iframe src="https://radioimagen76.radio12345.com/"></iframe>
+  </div>
 
 </div>
 
@@ -215,19 +217,7 @@ body::after{
 </div>
 
 <script>
-function togglePlay(){
-  let audio = document.getElementById('cannaAudio');
-  let btn = document.getElementById('playButton');
-
-  if(audio.paused){
-    audio.play();
-    btn.innerHTML = "⏸️ Pausar transmisión";
-  } else {
-    audio.pause();
-    btn.innerHTML = "▶️ Escuchar en vivo";
-  }
-}
-
+/* OYENTES */
 let oy = Math.floor(Math.random()*200)+420;
 function moverOy(){
   oy += Math.floor(Math.random()*7)-3;
@@ -238,6 +228,7 @@ function moverOy(){
 }
 setInterval(moverOy,1800); moverOy();
 
+/* HORA */
 function actHora(){
   let n = new Date();
   document.getElementById("hora").textContent =
@@ -247,11 +238,11 @@ function actHora(){
 }
 setInterval(actHora,1000); actHora();
 
+/* CLIMA */
 async function cargarClima(){
   try{
     let ip = await fetch("https://ipapi.co/json/").then(r=>r.json());
     let lat = ip.latitude, lon = ip.longitude;
-
     let r = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
     ).then(x=>x.json());
