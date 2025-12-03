@@ -113,34 +113,16 @@ body::after{
   font-size:1.3em;
   color:#000;font-weight:600;
   box-shadow:0 0 15px #00ff88;
+  cursor:pointer;
 }
 .play-btn:hover{transform:scale(1.08)}
 
-/* PLAYER FASTCAST4U */
-.player-box{
-  display:none;
-  margin-top:25px;
-}
-.player-container{
-  width:120px;
-  height:120px;
-  margin:auto;
-  overflow:hidden;
-  border-radius:25px;
-  box-shadow:0 0 18px #00ff99;
-}
-
-/* Ajuste genérico: intentar que se vea básicamente el botón */
-.player-container .cc_player{
-  transform:scale(.9);
-  transform-origin:top left;
-}
-
-/* CERRAR */
-.close-btn{
-  margin-top:15px;background:#ff0080;
-  padding:10px 20px;border:none;border-radius:10px;
-  color:#fff;cursor:pointer;
+/* ESTADO PLAYER */
+.player-status{
+  margin-top:15px;
+  font-size:.95em;
+  color:#e5e5e5;
+  opacity:.9;
 }
 
 /* INSTAGRAM */
@@ -183,14 +165,16 @@ body::after{
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
-  <button class="play-btn" onclick="abrirPlayer()">🎧 Escuchar radio en vivo</button>
+  <!-- AUDIO REAL -->
+  <audio id="cannafestAudio" preload="none"></audio>
 
-  <!-- PLAYER FASTCAST4U -->
-  <div class="player-box" id="playerBox">
-    <div class="player-container">
-      <div class="cc_player" data-username="ciborg347">Loading ...</div>
-    </div>
-    <button class="close-btn" onclick="cerrarPlayer()">❌ Cerrar</button>
+  <!-- BOTÓN PLAY/PAUSE -->
+  <button class="play-btn" id="playBtn" onclick="toggleRadio()">
+    🎧 Escuchar radio en vivo
+  </button>
+
+  <div class="player-status" id="playerStatus">
+    ⏸ La radio está detenida.
   </div>
 
 </div>
@@ -204,15 +188,33 @@ body::after{
   </a>
 </div>
 
-<!-- SCRIPT DEL PLAYER FASTCAST4U -->
-<script language="javascript" type="text/javascript" src="https://usa15.fastcast4u.com/system/player.js"></script>
-
 <script>
-function abrirPlayer(){
-  document.getElementById("playerBox").style.display="block";
-}
-function cerrarPlayer(){
-  document.getElementById("playerBox").style.display="none";
+// 👉 STREAM REAL FINAL
+const STREAM_URL = "https://usa16.fastcast4u.com/stream/ciborg347/";
+
+const audio = document.getElementById("cannafestAudio");
+audio.src = STREAM_URL;
+
+const playBtn = document.getElementById("playBtn");
+const statusEl = document.getElementById("playerStatus");
+
+let isPlaying = false;
+
+function toggleRadio(){
+  if(!isPlaying){
+    audio.play().then(()=>{
+      isPlaying = true;
+      playBtn.textContent = "⏹ Detener radio";
+      statusEl.textContent = "🎧 Reproduciendo RADIO CANNAFEST™...";
+    }).catch(()=>{
+      statusEl.textContent = "⚠ Tocá de nuevo para iniciar.";
+    });
+  }else{
+    audio.pause();
+    isPlaying = false;
+    playBtn.textContent = "🎧 Escuchar radio en vivo";
+    statusEl.textContent = "⏸ La radio está detenida.";
+  }
 }
 
 /* OYENTES */
