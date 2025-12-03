@@ -104,7 +104,7 @@ body::after{
  from{transform:translateX(100%)} to{transform:translateX(-100%)}
 }
 
-/* BOTÓN PRINCIPAL */
+/* BOTÓN PLAY */
 .play-btn{
   margin-top:20px;
   background:linear-gradient(135deg,#00ff88,#00cc66);
@@ -116,84 +116,19 @@ body::after{
   cursor:pointer;
 }
 .play-btn:hover{transform:scale(1.08)}
-
-/* ESTADO PLAYER */
-.player-status{
-  margin-top:15px;
-  font-size:.95em;
-  color:#e5e5e5;
-  opacity:.9;
-}
-
-/* INSTAGRAM */
-.insta-box{
-  margin-top:50px;padding:25px 20px;border-radius:20px;
-  max-width:600px;background:rgba(0,0,0,.8);
-  box-shadow:0 0 20px #ff00aa;
-}
-.insta-title{font-size:1.8em;color:#ff00aa;margin-bottom:10px}
-.insta-link{
-  color:#fff;text-decoration:none;font-size:1.2em;
-  display:inline-flex;align-items:center;gap:10px;
-}
-.insta-logo{width:35px;filter:drop-shadow(0 0 8px #ff00aa);}
-
-/* FOOTER + BOTÓN */
-footer{
-  margin-top:50px;
-  padding:30px 20px;
-  background:rgba(0,0,0,0.75);
-  border-top:2px solid #00ff88;
-  box-shadow:0 -4px 20px #00ff88;
-}
-
-.footer-btn{
-  background:#00ff88;
-  color:#000;
-  padding:14px 40px;
-  border-radius:40px;
-  font-size:1.2em;
-  font-weight:600;
-  cursor:pointer;
-  border:none;
-  box-shadow:0 0 15px #00ff88;
-}
-.footer-btn:hover{
-  transform:scale(1.07);
-}
-
-/* MINI PLAYER */
-#miniPlayer{
-  display:none;
-  margin-top:25px;
-  background:#0f0f0f;
-  border:2px solid #00ff88;
-  border-radius:15px;
-  padding:20px;
-  box-shadow:0 0 15px #00ff88;
-  max-width:400px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.mini-status{
-  margin-top:10px;
-  font-size:1em;
-  color:#eee;
-}
 </style>
 </head>
 
 <body>
 
-<!-- TOP INFO ORIGINAL -->
+<!-- TOP INFO -->
 <div class="top-info">
   <div class="clima-line" id="clima">Cargando clima...</div>
   <div class="hora-line" id="hora"></div>
   <div class="hora-line" id="fecha"></div>
 </div>
 
-<!-- RADIO ORIGINAL (no se toca) -->
+<!-- RADIO -->
 <div class="radio-box">
 
   <img src="https://iili.io/fzEhgnt.jpg" class="logo">
@@ -209,15 +144,11 @@ footer{
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
-  <audio id="cannafestAudio" preload="none"></audio>
+  <!-- AUDIO FASTCAST4U -->
+  <audio id="radioAudio" src="https://usa16.fastcast4u.com/stream/ciborg347/" preload="none"></audio>
 
-  <button class="play-btn" id="playBtn" onclick="toggleRadio()">
-    🎧 Escuchar radio en vivo
-  </button>
-
-  <div class="player-status" id="playerStatus">
-    ⏸ La radio está detenida.
-  </div>
+  <!-- BOTÓN PLAY -->
+  <button id="radioPlayBtn" class="play-btn" onclick="playRadio()">▶ Escuchar radio</button>
 
 </div>
 
@@ -230,76 +161,26 @@ footer{
   </a>
 </div>
 
-<!-- FOOTER NUEVO -->
-<footer>
-  <button class="footer-btn" onclick="toggleMini()">🎧 Escuchá en vivo</button>
-
-  <div id="miniPlayer">
-    <h3 style="color:#00ffcc;">Reproductor Mini</h3>
-
-    <audio id="miniAudio" preload="none"></audio>
-
-    <button class="play-btn" style="margin-top:15px;" onclick="toggleMiniRadio()">
-      ▶ Reproducir
-    </button>
-
-    <div class="mini-status" id="miniStatus">⏸ Detenido</div>
-  </div>
-</footer>
-
 <script>
-// STREAM
-const STREAM_URL = "https://usa16.fastcast4u.com/stream/ciborg347/";
+/* STREAM */
+const radio = document.getElementById("radioAudio");
+const btn = document.getElementById("radioPlayBtn");
 
-/* ---------------- RADIO ORIGINAL ---------------- */
-const audio = document.getElementById("cannafestAudio");
-audio.src = STREAM_URL;
-
-const playBtn = document.getElementById("playBtn");
-const statusEl = document.getElementById("playerStatus");
-
-let isPlaying = false;
-
-function toggleRadio(){
-  if(!isPlaying){
-    audio.play().then(()=>{
-      isPlaying = true;
-      playBtn.textContent = "⏹ Detener radio";
-      statusEl.textContent = "🎧 Reproduciendo RADIO CANNAFEST™...";
-    }).catch(()=>{
-      statusEl.textContent = "⚠ Tocá de nuevo para iniciar.";
+function playRadio(){
+  radio.play()
+    .then(()=>{
+      btn.textContent = "⏸ Detener radio";
+      btn.setAttribute("onclick","pauseRadio()");
+    })
+    .catch(()=>{
+      btn.textContent = "Tocá otra vez para iniciar";
     });
-  }else{
-    audio.pause();
-    isPlaying = false;
-    playBtn.textContent = "🎧 Escuchar radio en vivo";
-    statusEl.textContent = "⏸ La radio está detenida.";
-  }
 }
 
-/* ---------------- FOOTER MINI PLAYER ---------------- */
-function toggleMini(){
-  const box = document.getElementById("miniPlayer");
-  box.style.display = box.style.display === "none" ? "block" : "none";
-}
-
-/* REPRODUCTOR MINI */
-const miniAudio = document.getElementById("miniAudio");
-miniAudio.src = STREAM_URL;
-
-let miniPlay = false;
-
-function toggleMiniRadio(){
-  const miniStatus = document.getElementById("miniStatus");
-  if(!miniPlay){
-    miniAudio.play();
-    miniPlay = true;
-    miniStatus.textContent = "🎧 Reproduciendo";
-  }else{
-    miniAudio.pause();
-    miniPlay = false;
-    miniStatus.textContent = "⏸ Detenido";
-  }
+function pauseRadio(){
+  radio.pause();
+  btn.textContent = "▶ Escuchar radio";
+  btn.setAttribute("onclick","playRadio()");
 }
 
 /* OYENTES */
