@@ -22,66 +22,18 @@ body{
   color:#00ff99;
   text-align:center;
   padding:20px;
-  overflow-x:hidden;
 }
-
-/* HUMO */
-body::after{
-  content:"";
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:url('https://iili.io/J97rbBu.png') repeat;
-  opacity:.18;
-  animation:smokeMove 25s linear infinite;
-  z-index:-1;
-}
-@keyframes smokeMove{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(-300px)}
-}
-
-/* TOP INFO */
-.top-info{
-  max-width:600px;margin:10px auto;
-  padding:15px 20px;background:rgba(0,0,0,.6);
-  border-radius:15px;box-shadow:0 0 20px #00ff88;
-}
-.clima-line{font-size:1.1em;color:#00ff99;text-shadow:0 0 10px #00ff99;}
-.hora-line{font-size:1em;color:#fff;opacity:.85}
 
 /* LOGO */
 .logo{
   width:220px;margin:10px auto;display:block;
   filter:drop-shadow(0 0 15px #00ff99);
-  animation:logoPulse 4s infinite ease-in-out;
-}
-@keyframes logoPulse{
-  0%{filter:drop-shadow(0 0 8px #00ff99)}
-  50%{filter:drop-shadow(0 0 22px #00ff99)}
-  100%{filter:drop-shadow(0 0 8px #00ff99)}
 }
 
 /* TÍTULO */
 .title{
   font-size:2.8em;font-weight:700;
-  color:#00ffcc;text-shadow:0 0 20px #00ff88,0 0 40px #00ffaa;
-}
-
-/* EN VIVO */
-.en-vivo{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,0,0,.25);border:1px solid #ff0033;
-  padding:6px 18px;border-radius:25px;
-  color:#ff3355;font-weight:700;margin:10px auto;
-  box-shadow:0 0 12px #ff0033;
-}
-.en-vivo .dot{
-  width:10px;height:10px;border-radius:50%;background:#ff0033;
-  animation:pulse 1s infinite;
-}
-@keyframes pulse{
- 0%{transform:scale(.9);opacity:.6}
- 50%{transform:scale(1.4);opacity:1}
- 100%{transform:scale(.9);opacity:.6}
+  color:#00ffcc;text-shadow:0 0 20px #00ff88;
 }
 
 /* CAJA RADIO */
@@ -89,19 +41,6 @@ body::after{
   background:rgba(0,0,0,.75);padding:40px 30px;
   border-radius:25px;max-width:650px;margin:30px auto;
   box-shadow:0 0 30px #00ff99;
-  border:2px solid rgba(0,255,150,0.4);
-}
-
-/* OYENTES */
-.marquee-container{overflow:hidden;width:100%;margin-top:10px}
-.marquee{
-  white-space:nowrap;display:inline-block;
-  font-size:1.25em;font-weight:600;
-  color:#00ffcc;text-shadow:0 0 15px #00ffcc;
-  animation:scroll 14s linear infinite;
-}
-@keyframes scroll{
- from{transform:translateX(100%)} to{transform:translateX(-100%)}
 }
 
 /* BOTÓN PLAY */
@@ -115,142 +54,57 @@ body::after{
   box-shadow:0 0 15px #00ff88;
   cursor:pointer;
 }
-.play-btn:hover{transform:scale(1.08)}
-
-/* INSTAGRAM */
-.insta-box{
-  margin-top:50px;padding:25px 20px;border-radius:20px;
-  max-width:600px;background:rgba(0,0,0,.8);
-  box-shadow:0 0 20px #ff00aa;
-}
-.insta-title{font-size:1.8em;color:#ff00aa;margin-bottom:10px}
-.insta-link{
-  color:#fff;text-decoration:none;font-size:1.2em;
-  display:inline-flex;align-items:center;gap:10px;
-}
-.insta-logo{
-  width:30px;
-  filter:drop-shadow(0 0 8px #ff00aa);
-}
-
-/* PLAYER ENMASCARADO (OCULTO) */
-#hiddenPlayer{
-  width:1px;
-  height:1px;
-  opacity:0;
-  overflow:hidden;
-  position:absolute;
-  left:-9999px;
-}
 </style>
 </head>
 
 <body>
 
-<!-- TOP INFO -->
-<div class="top-info">
-  <div class="clima-line" id="clima">Cargando clima...</div>
-  <div class="hora-line" id="hora"></div>
-  <div class="hora-line" id="fecha"></div>
-</div>
-
-<!-- RADIO -->
 <div class="radio-box">
 
   <img src="https://iili.io/fzEhgnt.jpg" class="logo">
   <h1 class="title">RADIO CANNAFEST™</h1>
 
-  <div class="en-vivo"><div class="dot"></div> EN VIVO</div>
-
-  <div class="marquee-container">
-    <div class="marquee" id="marqueeText">Oyentes en este momento: 500</div>
-  </div>
-
-  <p style="color:#fff;opacity:.9;font-size:1.1em;margin-top:10px;">
+  <p style="color:#fff;opacity:.9;font-size:1.1em;">
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
-  <!-- BOTÓN PLAY QUE ACTIVA EL PLAYER ENMASCARADO -->
-  <button class="play-btn" onclick="startRadio()">▶ Escuchar radio</button>
+  <!-- AUDIO REAL FASTCAST4U -->
+  <audio id="radioPlayer" preload="none"></audio>
 
-</div>
+  <!-- BOTÓN PLAY REAL -->
+  <button class="play-btn" id="playBtn" onclick="toggleRadio()">
+    ▶ Escuchar radio
+  </button>
 
-<!-- PLAYER FASTCAST4U ENMASCARADO -->
-<iframe
- id="hiddenPlayer"
- src="https://secure.fastcast4u.com/player/ciborg347/?autoplay=1"
- allow="autoplay">
-</iframe>
-
-<!-- INSTAGRAM -->
-<div class="insta-box">
-  <h2 class="insta-title">Instagram Oficial</h2>
-  <a href="https://www.instagram.com/cannafest2025" target="_blank" class="insta-link">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="insta-logo">
-    @cannafest2025
-  </a>
 </div>
 
 <script>
-function startRadio(){
-  document.getElementById("hiddenPlayer").src =
-    "https://secure.fastcast4u.com/player/ciborg347/?autoplay=1";
+const audio = document.getElementById("radioPlayer");
+audio.src = "https://usa16.fastcast4u.com/stream/ciborg347/";  // tu stream real
 
-  const btn = document.querySelector(".play-btn");
-  btn.textContent = "⏸ Detener radio";
-  btn.onclick = stopRadio;
-}
+let playing = false;
 
-function stopRadio(){
-  document.getElementById("hiddenPlayer").src = "";
-  
-  const btn = document.querySelector(".play-btn");
-  btn.textContent = "▶ Escuchar radio";
-  btn.onclick = startRadio;
-}
+function toggleRadio(){
 
-/* OYENTES */
-let oy = Math.floor(Math.random()*200)+420;
-function moverOy(){
-  oy += Math.floor(Math.random()*7)-3;
-  if(oy<320)oy=320;
-  if(oy>860)oy=860;
-  document.getElementById("marqueeText").textContent="Oyentes en este momento: "+oy;
-}
-setInterval(moverOy,1800); moverOy();
+  if(!playing){
+    audio.load();     // fuerza el buffer
+    audio.play()      // inicia la radio
+    .then(()=>{
+      playing = true;
+      document.getElementById("playBtn").textContent = "⏸ Detener radio";
+    })
+    .catch(err=>{
+      console.log("Error de inicio:", err);
+      alert("Tocá nuevamente para iniciar la radio");
+    });
+  }
 
-/* HORA */
-function actHora(){
-  let n=new Date();
-  document.getElementById("hora").textContent=n.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
-  document.getElementById("fecha").textContent=n.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"});
-}
-setInterval(actHora,1000); actHora();
-
-/* CLIMA */
-async function cargarClima(){
-  try{
-    let ip=await fetch("https://ipapi.co/json/").then(r=>r.json());
-    let lat=ip.latitude, lon=ip.longitude;
-    let r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`).then(x=>x.json());
-    
-    let t=r.current_weather.temperature;
-    let c=r.current_weather.weathercode;
-    
-    let icon="☀️", est="Despejado";
-    if(c>=45&&c<=48){icon="🌫️";est="Niebla"}
-    if(c>=51&&c<=57){icon="🌦️";est="Llovizna"}
-    if(c>=61&&c<=67){icon="🌧️";est="Lluvia"}
-    if(c>=71&&c<=77){icon="❄️";est="Nieve"}
-    if(c>=80&&c<=82){icon="🌧️";est="Chaparrones"}
-    if(c>=95){icon="⛈️";est="Tormenta"}
-
-    document.getElementById("clima").textContent=`${icon} ${ip.city} – ${t}°C – ${est}`;
-  }catch{
-    document.getElementById("clima").textContent="Clima no disponible";
+  else {
+    audio.pause();
+    playing = false;
+    document.getElementById("playBtn").textContent = "▶ Escuchar radio";
   }
 }
-cargarClima();
 </script>
 
 </body>
