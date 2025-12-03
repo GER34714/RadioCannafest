@@ -144,7 +144,7 @@ body::after{
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
-  <!-- AUDIO REAL FASTCAST4U -->
+  <!-- AUDIO FASTCAST4U -->
   <audio id="radioPlayer" preload="none" src="https://usa15.fastcast4u.com/proxy/ciborg347?mp=/1"></audio>
 
   <!-- BOTÓN DE PLAY -->
@@ -166,7 +166,7 @@ body::after{
 </div>
 
 <script>
-/* PLAYER REAL */
+/* 🎧 PLAYER */
 const audio = document.getElementById("radioPlayer");
 const btn = document.getElementById("playBtn");
 const statusEl = document.getElementById("playerStatus");
@@ -192,36 +192,49 @@ function toggleRadio(){
   }
 }
 
-/* HORA + CLIMA */
+/* ⏰ HORA */
 function actHora(){
   let n=new Date();
-  document.getElementById("hora").textContent=n.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
-  document.getElementById("fecha").textContent=n.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"});
+  document.getElementById("hora").textContent =
+    n.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
+  document.getElementById("fecha").textContent =
+    n.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"});
 }
 setInterval(actHora,1000); actHora();
 
-async function cargarClima(){
-  try{
-    let ip=await fetch("https://ipapi.co/json/").then(r=>r.json());
-    let r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${ip.latitude}&longitude=${ip.longitude}&current_weather=true`).then(x=>x.json());
-    let t=r.current_weather.temperature;
-    let c=r.current_weather.weathercode;
+/* 🌦 CLIMA — 100% FUNCIONAL */
+function cargarClimaPorCoords(lat, lon){
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+    .then(r=>r.json())
+    .then(data=>{
+      let t = data.current_weather.temperature;
+      let c = data.current_weather.weathercode;
 
-    let icon="☀️", est="Despejado";
-    if(c>=45&&c<=48){icon="🌫️";est="Niebla"}
-    if(c>=51&&c<=57){icon="🌦️";est="Llovizna"}
-    if(c>=61&&c<=67){icon="🌧️";est="Lluvia"}
-    if(c>=71&&c<=77){icon="❄️";est="Nieve"}
-    if(c>=80&&c<=82){icon="🌧️";est="Chaparrones"}
-    if(c>=95){icon="⛈️";est="Tormenta"}
+      let icon="☀️", est="Despejado";
+      if(c>=45&&c<=48){icon="🌫️";est="Niebla"}
+      if(c>=51&&c<=57){icon="🌦️";est="Llovizna"}
+      if(c>=61&&c<=67){icon="🌧️";est="Lluvia"}
+      if(c>=71&&c<=77){icon="❄️";est="Nieve"}
+      if(c>=80&&c<=82){icon="🌧️";est="Chaparrones"}
+      if(c>=95){icon="⛈️";est="Tormenta"}
 
-    document.getElementById("clima").textContent=
-      `${icon} ${ip.city} – ${t}°C – ${est}`;
-  }catch{
-    document.getElementById("clima").textContent="Clima no disponible";
-  }
+      document.getElementById("clima").textContent =
+        `${icon} ${t}°C – ${est}`;
+    })
+    .catch(()=>{
+      document.getElementById("clima").textContent = "Clima no disponible";
+    });
 }
-cargarClima();
+
+/* GEOLOCALIZACIÓN SEGURA */
+if(navigator.geolocation){
+  navigator.geolocation.getCurrentPosition(
+    pos => cargarClimaPorCoords(pos.coords.latitude, pos.coords.longitude),
+    err => cargarClimaPorCoords(-34.61,-58.38) // Buenos Aires fallback
+  );
+}else{
+  cargarClimaPorCoords(-34.61,-58.38);
+}
 </script>
 
 </body>
