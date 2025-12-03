@@ -116,6 +116,32 @@ body::after{
   cursor:pointer;
 }
 .play-btn:hover{transform:scale(1.08)}
+
+/* INSTAGRAM */
+.insta-box{
+  margin-top:50px;padding:25px 20px;border-radius:20px;
+  max-width:600px;background:rgba(0,0,0,.8);
+  box-shadow:0 0 20px #ff00aa;
+}
+.insta-title{font-size:1.8em;color:#ff00aa;margin-bottom:10px}
+.insta-link{
+  color:#fff;text-decoration:none;font-size:1.2em;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.insta-logo{
+  width:30px;
+  filter:drop-shadow(0 0 8px #ff00aa);
+}
+
+/* PLAYER ENMASCARADO (OCULTO) */
+#hiddenPlayer{
+  width:1px;
+  height:1px;
+  opacity:0;
+  overflow:hidden;
+  position:absolute;
+  left:-9999px;
+}
 </style>
 </head>
 
@@ -144,13 +170,17 @@ body::after{
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
-  <!-- AUDIO FASTCAST4U -->
-  <audio id="radioAudio" src="https://usa16.fastcast4u.com/stream/ciborg347/" preload="none"></audio>
-
-  <!-- BOTÓN PLAY -->
-  <button id="radioPlayBtn" class="play-btn" onclick="playRadio()">▶ Escuchar radio</button>
+  <!-- BOTÓN PLAY QUE ACTIVA EL PLAYER ENMASCARADO -->
+  <button class="play-btn" onclick="startRadio()">▶ Escuchar radio</button>
 
 </div>
+
+<!-- PLAYER FASTCAST4U ENMASCARADO -->
+<iframe
+ id="hiddenPlayer"
+ src="https://secure.fastcast4u.com/player/ciborg347/?autoplay=1"
+ allow="autoplay">
+</iframe>
 
 <!-- INSTAGRAM -->
 <div class="insta-box">
@@ -162,25 +192,21 @@ body::after{
 </div>
 
 <script>
-/* STREAM */
-const radio = document.getElementById("radioAudio");
-const btn = document.getElementById("radioPlayBtn");
+function startRadio(){
+  document.getElementById("hiddenPlayer").src =
+    "https://secure.fastcast4u.com/player/ciborg347/?autoplay=1";
 
-function playRadio(){
-  radio.play()
-    .then(()=>{
-      btn.textContent = "⏸ Detener radio";
-      btn.setAttribute("onclick","pauseRadio()");
-    })
-    .catch(()=>{
-      btn.textContent = "Tocá otra vez para iniciar";
-    });
+  const btn = document.querySelector(".play-btn");
+  btn.textContent = "⏸ Detener radio";
+  btn.onclick = stopRadio;
 }
 
-function pauseRadio(){
-  radio.pause();
+function stopRadio(){
+  document.getElementById("hiddenPlayer").src = "";
+  
+  const btn = document.querySelector(".play-btn");
   btn.textContent = "▶ Escuchar radio";
-  btn.setAttribute("onclick","playRadio()");
+  btn.onclick = startRadio;
 }
 
 /* OYENTES */
