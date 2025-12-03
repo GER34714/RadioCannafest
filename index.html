@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="https://iili.io/fzEhgnt.jpg">
 
 <meta property="og:title" content="RADIO CANNAFEST™ | En Vivo 24hs">
-<meta property="og:description" content="🎵 Música, cultura y vibra 420 en vivo.">
+<meta property="og:description" content="Música, cultura y vibra 420 en vivo.">
 <meta property="og:image" content="https://iili.io/fzEhgnt.jpg">
 <meta name="theme-color" content="#00ff88">
 
@@ -116,7 +116,7 @@ body::after{
 }
 .play-btn:hover{transform:scale(1.08)}
 
-/* PLAYER – RECORTE EXACTO + EMBED TRUE */
+/* PLAYER – RECORTE EXACTO */
 .player-box{
   display:none;margin-top:25px;
 }
@@ -127,8 +127,8 @@ body::after{
 }
 .player-container iframe{
   width:100%;height:300px;
-  transform:translateY(-200px); /* RECORTE QUE FUNCIONA */
   border:none;
+  transform:translateY(-200px); /* RECORTE EXACTO */
 }
 
 /* CERRAR */
@@ -155,12 +155,14 @@ body::after{
 
 <body>
 
+<!-- TOP INFO -->
 <div class="top-info">
   <div class="clima-line" id="clima">Cargando clima...</div>
   <div class="hora-line" id="hora"></div>
   <div class="hora-line" id="fecha"></div>
 </div>
 
+<!-- RADIO -->
 <div class="radio-box">
 
   <img src="https://iili.io/fzEhgnt.jpg" class="logo">
@@ -178,18 +180,17 @@ body::after{
 
   <button class="play-btn" onclick="abrirPlayer()">🎧 Escuchar radio en vivo</button>
 
-  <!-- PLAYER DEFINITIVO – SIN REDIRECCIÓN -->
+  <!-- PLAYER DEFINITIVO CON TU LINK REAL -->
   <div class="player-box" id="playerBox">
     <div class="player-container">
-      <iframe 
-        src="https://radioimagen76.radio12345.com/?l=0&embed=true">
-      </iframe>
+      <iframe src="https://radioimagen76.radio12345.com/?l=0&embed=true"></iframe>
     </div>
     <button class="close-btn" onclick="cerrarPlayer()">❌ Cerrar</button>
   </div>
 
 </div>
 
+<!-- INSTAGRAM -->
 <div class="insta-box">
   <h2 class="insta-title">Instagram Oficial</h2>
   <a href="https://www.instagram.com/cannafest2025" target="_blank" class="insta-link">
