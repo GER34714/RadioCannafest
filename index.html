@@ -25,11 +25,10 @@ body{
   overflow-x:hidden;
 }
 
-/* HUMO VERDE SUAVE */
+/* HUMO */
 body::after{
   content:"";
-  position:fixed;
-  top:0;left:0;width:100%;height:100%;
+  position:fixed;top:0;left:0;width:100%;height:100%;
   background:url('https://iili.io/J97rbBu.png') repeat;
   opacity:.18;
   animation:smokeMove 25s linear infinite;
@@ -42,29 +41,16 @@ body::after{
 
 /* TOP INFO */
 .top-info{
-  max-width:600px;
-  margin:10px auto;
-  padding:15px 20px;
-  background:rgba(0,0,0,.6);
-  border-radius:15px;
-  box-shadow:0 0 20px #00ff88;
+  max-width:600px;margin:10px auto;
+  padding:15px 20px;background:rgba(0,0,0,.6);
+  border-radius:15px;box-shadow:0 0 20px #00ff88;
 }
-.clima-line{
-  font-size:1.1em;
-  color:#00ff99;
-  text-shadow:0 0 10px #00ff99;
-}
-.hora-line{
-  font-size:1em;
-  color:#fff;
-  opacity:.85;
-}
+.clima-line{font-size:1.1em;color:#00ff99;text-shadow:0 0 10px #00ff99;}
+.hora-line{font-size:1em;color:#fff;opacity:.85}
 
 /* LOGO */
 .logo{
-  width:220px;
-  margin:10px auto;
-  display:block;
+  width:220px;margin:10px auto;display:block;
   filter:drop-shadow(0 0 15px #00ff99);
   animation:logoPulse 4s infinite ease-in-out;
 }
@@ -76,34 +62,20 @@ body::after{
 
 /* TÍTULO */
 .title{
-  font-size:2.8em;
-  font-weight:700;
-  color:#00ffcc;
-  text-shadow:0 0 20px #00ff88, 0 0 40px #00ffaa;
-  animation:titleGlow 4s infinite alternate;
-}
-@keyframes titleGlow{
-  from{opacity:.85}
-  to{opacity:1}
+  font-size:2.8em;font-weight:700;
+  color:#00ffcc;text-shadow:0 0 20px #00ff88,0 0 40px #00ffaa;
 }
 
 /* EN VIVO */
 .en-vivo{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:rgba(255,0,0,.25);
-  border:1px solid #ff0033;
-  padding:6px 18px;
-  border-radius:25px;
-  color:#ff3355;
-  font-weight:700;
-  margin:12px auto;
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,0,0,.25);border:1px solid #ff0033;
+  padding:6px 18px;border-radius:25px;
+  color:#ff3355;font-weight:700;margin:10px auto;
   box-shadow:0 0 12px #ff0033;
 }
 .en-vivo .dot{
-  width:10px;height:10px;border-radius:50%;
-  background:#ff0033;
+  width:10px;height:10px;border-radius:50%;background:#ff0033;
   animation:pulse 1s infinite;
 }
 @keyframes pulse{
@@ -114,19 +86,14 @@ body::after{
 
 /* CAJA RADIO */
 .radio-box{
-  background:rgba(0,0,0,.75);
-  padding:40px 30px;
-  border-radius:25px;
-  max-width:650px;
-  margin:30px auto;
+  background:rgba(0,0,0,.75);padding:40px 30px;
+  border-radius:25px;max-width:650px;margin:30px auto;
   box-shadow:0 0 30px #00ff99;
   border:2px solid rgba(0,255,150,0.4);
 }
 
-/* MARQUEE */
-.marquee-container{
-  overflow:hidden;width:100%;margin-top:10px
-}
+/* OYENTES */
+.marquee-container{overflow:hidden;width:100%;margin-top:10px}
 .marquee{
   white-space:nowrap;display:inline-block;
   font-size:1.25em;font-weight:600;
@@ -134,40 +101,46 @@ body::after{
   animation:scroll 14s linear infinite;
 }
 @keyframes scroll{
- from{transform:translateX(100%)}
- to{transform:translateX(-100%)}
+ from{transform:translateX(100%)} to{transform:translateX(-100%)}
 }
 
-/* PLAYER — SOLO EL BOTÓN */
+/* BOTÓN PRINCIPAL */
+.play-btn{
+  margin-top:20px;background:linear-gradient(135deg,#00ff88,#00cc66);
+  padding:15px 50px;border:none;border-radius:50px;
+  font-size:1.3em;color:#000;font-weight:600;
+  box-shadow:0 0 15px #00ff88;
+}
+.play-btn:hover{transform:scale(1.08)}
+
+/* PLAYER — RECORTE EXACTO DE RADIO IMAGEN */
+.player-box{
+  display:none;margin-top:25px;
+}
 .player-container{
-  width:100%;
-  max-width:120px;
-  height:52px;
-  margin:25px auto 0;
-  overflow:hidden;
-  border-radius:50px;
-  box-shadow:0 0 18px #00ff99;
+  width:120px;height:100px;margin:auto;
+  overflow:hidden;border-radius:20px;
+  box-shadow:0 0 15px #00ff99;
+}
+.player-container iframe{
+  width:100%;height:300px;
+  transform:translateY(-200px); /* RECORTE ORIGINAL QUE FUNCIONA */
+  border:none;
 }
 
-.player-container iframe{
-  width:100%;
-  height:180px;
-  border:none;
-  transform:translateY(-84px); /* RECORTE PERFECTO DEL BOTÓN */
+.close-btn{
+  margin-top:15px;background:#ff0080;
+  padding:10px 20px;border:none;border-radius:10px;
+  color:#fff;cursor:pointer;
 }
 
 /* INSTAGRAM */
 .insta-box{
-  margin-top:50px;
-  padding:25px 20px;
-  border-radius:20px;
-  max-width:600px;
-  background:rgba(0,0,0,.8);
+  margin-top:50px;padding:25px 20px;border-radius:20px;
+  max-width:600px;background:rgba(0,0,0,.8);
   box-shadow:0 0 20px #ff00aa;
 }
-.insta-title{
-  font-size:1.8em;color:#ff00aa;margin-bottom:10px;
-}
+.insta-title{font-size:1.8em;color:#ff00aa;margin-bottom:10px}
 .insta-link{
   color:#fff;text-decoration:none;font-size:1.2em;
   display:inline-flex;align-items:center;gap:10px;
@@ -178,14 +151,12 @@ body::after{
 
 <body>
 
-<!-- TOP INFO -->
 <div class="top-info">
   <div class="clima-line" id="clima">Cargando clima...</div>
   <div class="hora-line" id="hora"></div>
   <div class="hora-line" id="fecha"></div>
 </div>
 
-<!-- RADIO BOX -->
 <div class="radio-box">
 
   <img src="https://iili.io/fzEhgnt.jpg" class="logo">
@@ -201,14 +172,19 @@ body::after{
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
-  <!-- BOTÓN PLAY OFICIAL RECORTADO -->
-  <div class="player-container">
-    <iframe src="https://radioimagen76.radio12345.com/"></iframe>
+  <!-- BOTÓN PRINCIPAL -->
+  <button class="play-btn" onclick="abrirPlayer()">🎧 Escuchar radio en vivo</button>
+
+  <!-- PLAYER RECORTADO IGUAL QUE RADIO IMAGEN -->
+  <div class="player-box" id="playerBox">
+    <div class="player-container">
+      <iframe src="https://radioimagen76.radio12345.com/"></iframe>
+    </div>
+    <button class="close-btn" onclick="cerrarPlayer()">❌ Cerrar</button>
   </div>
 
 </div>
 
-<!-- INSTAGRAM -->
 <div class="insta-box">
   <h2 class="insta-title">Instagram Oficial</h2>
   <a href="https://www.instagram.com/cannafest2025" target="_blank" class="insta-link">
@@ -218,40 +194,42 @@ body::after{
 </div>
 
 <script>
+function abrirPlayer(){
+  document.getElementById("playerBox").style.display="block";
+}
+function cerrarPlayer(){
+  document.getElementById("playerBox").style.display="none";
+}
+
 /* OYENTES */
 let oy = Math.floor(Math.random()*200)+420;
 function moverOy(){
   oy += Math.floor(Math.random()*7)-3;
   if(oy<320)oy=320;
   if(oy>860)oy=860;
-  document.getElementById("marqueeText").textContent =
-    "Oyentes en este momento: "+oy;
+  document.getElementById("marqueeText").textContent="Oyentes en este momento: "+oy;
 }
 setInterval(moverOy,1800); moverOy();
 
 /* HORA */
 function actHora(){
-  let n = new Date();
-  document.getElementById("hora").textContent =
-    n.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
-  document.getElementById("fecha").textContent =
-    n.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"});
+  let n=new Date();
+  document.getElementById("hora").textContent=n.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
+  document.getElementById("fecha").textContent=n.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"});
 }
 setInterval(actHora,1000); actHora();
 
 /* CLIMA */
 async function cargarClima(){
   try{
-    let ip = await fetch("https://ipapi.co/json/").then(r=>r.json());
-    let lat = ip.latitude, lon = ip.longitude;
-    let r = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
-    ).then(x=>x.json());
-
-    let t = r.current_weather.temperature;
-    let c = r.current_weather.weathercode;
-
-    let icon = "☀️", est = "Despejado";
+    let ip=await fetch("https://ipapi.co/json/").then(r=>r.json());
+    let lat=ip.latitude, lon=ip.longitude;
+    let r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`).then(x=>x.json());
+    
+    let t=r.current_weather.temperature;
+    let c=r.current_weather.weathercode;
+    
+    let icon="☀️", est="Despejado";
     if(c>=45&&c<=48){icon="🌫️";est="Niebla"}
     if(c>=51&&c<=57){icon="🌦️";est="Llovizna"}
     if(c>=61&&c<=67){icon="🌧️";est="Lluvia"}
@@ -259,8 +237,7 @@ async function cargarClima(){
     if(c>=80&&c<=82){icon="🌧️";est="Chaparrones"}
     if(c>=95){icon="⛈️";est="Tormenta"}
 
-    document.getElementById("clima").textContent =
-      `${icon} ${ip.city} – ${t}°C – ${est}`;
+    document.getElementById("clima").textContent=`${icon} ${ip.city} – ${t}°C – ${est}`;
   }catch{
     document.getElementById("clima").textContent="Clima no disponible";
   }
