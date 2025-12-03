@@ -60,7 +60,7 @@ body::after{
   opacity:.85;
 }
 
-/* LOGO CON GLOW 420 */
+/* LOGO */
 .logo{
   width:220px;
   margin:10px auto;
@@ -87,7 +87,7 @@ body::after{
   to{opacity:1}
 }
 
-/* EN VIVO ELECTRO */
+/* EN VIVO */
 .en-vivo{
   display:inline-flex;
   align-items:center;
@@ -138,21 +138,22 @@ body::after{
  to{transform:translateX(-100%)}
 }
 
-/* PLAY BUTTON (solo botón del iframe) */
+/* PLAYER — SOLO EL BOTÓN */
 .player-container{
   width:100%;
-  max-width:280px;
-  height:60px;          /* ← SOLO EL BOTÓN */
+  max-width:120px;
+  height:52px;
   margin:25px auto 0;
   overflow:hidden;
-  border-radius:15px;
+  border-radius:50px;
   box-shadow:0 0 18px #00ff99;
 }
+
 .player-container iframe{
   width:100%;
-  height:200px;         /* recorte del player */
-  transform:translateY(-55px); /* se mueve para mostrar SOLO el botón */
+  height:180px;
   border:none;
+  transform:translateY(-84px); /* RECORTE PERFECTO DEL BOTÓN */
 }
 
 /* INSTAGRAM */
