@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🎧 RADIO CANNAFEST™ | En Vivo 24hs</title>
 
-<link rel="icon" type="image/png" href="https://iili.io/fzEhgnt.jpg">
+<link rel="icon" type="image/png" href="https://iili.io/fIqhMwQ.webp">
 
 <meta property="og:title" content="RADIO CANNAFEST™ | En Vivo 24hs">
 <meta property="og:description" content="Música, cultura y vibra 420 en vivo.">
-<meta property="og:image" content="https://iili.io/fzEhgnt.jpg">
+<meta property="og:image" content="https://iili.io/fIqhMwQ.webp">
 <meta name="theme-color" content="#00ff88">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght:300;400;600&family=Montserrat:wght:600;700&display=swap" rel="stylesheet">
@@ -25,20 +25,6 @@ body{
   overflow-x:hidden;
 }
 
-/* HUMO */
-body::after{
-  content:"";
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:url('https://iili.io/J97rbBu.png') repeat;
-  opacity:.18;
-  animation:smokeMove 25s linear infinite;
-  z-index:-1;
-}
-@keyframes smokeMove{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(-300px)}
-}
-
 /* TOP INFO */
 .top-info{
   max-width:600px;margin:10px auto;
@@ -48,16 +34,16 @@ body::after{
 .clima-line{font-size:1.1em;color:#00ff99;text-shadow:0 0 10px #00ff99;}
 .hora-line{font-size:1em;color:#fff;opacity:.85}
 
-/* LOGO */
+/* LOGO NUEVO + NEÓN MULTICOLOR */
 .logo{
-  width:220px;margin:10px auto;display:block;
-  filter:drop-shadow(0 0 15px #00ff99);
-  animation:logoPulse 4s infinite ease-in-out;
+  width:240px;margin:10px auto;display:block;
+  animation:logoNeon 3s infinite ease-in-out;
 }
-@keyframes logoPulse{
-  0%{filter:drop-shadow(0 0 8px #00ff99)}
-  50%{filter:drop-shadow(0 0 22px #00ff99)}
-  100%{filter:drop-shadow(0 0 8px #00ff99)}
+@keyframes logoNeon{
+  0%{filter:drop-shadow(0 0 12px #ffff33)}
+  33%{filter:drop-shadow(0 0 14px #ff3333)}
+  66%{filter:drop-shadow(0 0 14px #22ff22)}
+  100%{filter:drop-shadow(0 0 12px #ffff33)}
 }
 
 /* TÍTULO */
@@ -92,7 +78,7 @@ body::after{
   border:2px solid rgba(0,255,150,0.4);
 }
 
-/* PLAY */
+/* BOTÓN PLAY */
 .play-btn{
   margin-top:20px;
   background:linear-gradient(135deg,#00ff88,#00cc66);
@@ -104,6 +90,44 @@ body::after{
   cursor:pointer;
 }
 .play-btn:hover{transform:scale(1.08)}
+
+/* BOTÓN COMPARTIR */
+.share-btn{
+  margin-top:15px;
+  background:linear-gradient(135deg,#00ccff,#0088ff);
+  padding:12px 40px;
+  border:none;border-radius:50px;
+  font-size:1.1em;
+  color:#fff;font-weight:600;
+  box-shadow:0 0 15px #00aaff;
+  cursor:pointer;
+}
+.share-btn:hover{transform:scale(1.08)}
+
+/* INSTAGRAM */
+.insta-box{
+  margin-top:50px;padding:25px 20px;border-radius:20px;
+  max-width:600px;background:rgba(0,0,0,.8);
+  box-shadow:0 0 20px #ff00aa;
+}
+.insta-title{font-size:1.8em;color:#ff00aa;margin-bottom:10px}
+.insta-link{
+  color:#fff;text-decoration:none;font-size:1.2em;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.insta-logo{
+  width:30px;
+  filter:drop-shadow(0 0 8px #ff00aa);
+}
+
+/* FOOTER LINK NUEVO */
+.footer-ciborg{
+  margin-top:60px;
+  color:#00ff88;
+  font-size:1.1em;
+  text-decoration:none;
+  display:block;
+}
 </style>
 </head>
 
@@ -116,9 +140,10 @@ body::after{
   <div class="hora-line" id="fecha"></div>
 </div>
 
+<!-- RADIO -->
 <div class="radio-box">
 
-  <img src="https://iili.io/fzEhgnt.jpg" class="logo">
+  <img src="https://iili.io/fIqhMwQ.webp" class="logo">
   <h1 class="title">RADIO CANNAFEST™</h1>
 
   <div class="en-vivo"><div class="dot"></div> EN VIVO</div>
@@ -127,9 +152,14 @@ body::after{
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
+  <!-- AUDIO REAL FASTCAST4U -->
   <audio id="radioPlayer" preload="none" src="https://usa15.fastcast4u.com/proxy/ciborg347?mp=/1"></audio>
 
+  <!-- BOTÓN DE PLAY -->
   <button class="play-btn" id="playBtn" onclick="toggleRadio()">▶ Escuchar radio</button>
+
+  <!-- BOTÓN COMPARTIR -->
+  <button class="share-btn" onclick="shareRadio()">📲 Compartir Radio Cannafest</button>
 
   <div id="playerStatus" style="color:#fff;margin-top:10px;opacity:.9;">
     ⏸ La radio está detenida.
@@ -137,8 +167,22 @@ body::after{
 
 </div>
 
+<!-- INSTAGRAM -->
+<div class="insta-box">
+  <h2 class="insta-title">Instagram Oficial</h2>
+  <a href="https://www.instagram.com/cannafest2025" target="_blank" class="insta-link">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="insta-logo">
+    @cannafest2025
+  </a>
+</div>
+
+<!-- FOOTER NUEVO -->
+<a class="footer-ciborg" href="https://ciborg347.onrender.com" target="_blank">
+  Creado y diseñado por Ciborg347™
+</a>
+
 <script>
-/* RADIO */
+/* PLAYER REAL */
 const audio = document.getElementById("radioPlayer");
 const btn = document.getElementById("playBtn");
 const statusEl = document.getElementById("playerStatus");
@@ -164,30 +208,31 @@ function toggleRadio(){
   }
 }
 
-/* HORA */
+/* COMPARTIR */
+function shareRadio(){
+  const url = "https://ciborg347.onrender.com";
+  const text = "🎧 Escuchá Radio CANNAFEST™ en vivo 24hs!";
+  if(navigator.share){
+    navigator.share({title:"Radio Cannafest",text, url});
+  } else {
+    alert("Copiá y compartí:\n" + url);
+  }
+}
+
+/* HORA + CLIMA */
 function actHora(){
   let n=new Date();
-  document.getElementById("hora").textContent =
-    n.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
-  document.getElementById("fecha").textContent =
-    n.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"});
+  document.getElementById("hora").textContent=n.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
+  document.getElementById("fecha").textContent=n.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"});
 }
 setInterval(actHora,1000); actHora();
 
-/* 🌦 CLIMA — VERSIÓN RADIO IMAGEN (ipapi + open-meteo) */
 async function cargarClima(){
   try{
-    let ip = await fetch("https://ipapi.co/json/").then(r=>r.json());
-
-    let lat = ip.latitude;
-    let lon = ip.longitude;
-
-    let r = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
-    ).then(x=>x.json());
-
-    let t = r.current_weather.temperature;
-    let c = r.current_weather.weathercode;
+    let ip=await fetch("https://ipapi.co/json/").then(r=>r.json());
+    let r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${ip.latitude}&longitude=${ip.longitude}&current_weather=true`).then(x=>x.json());
+    let t=r.current_weather.temperature;
+    let c=r.current_weather.weathercode;
 
     let icon="☀️", est="Despejado";
     if(c>=45&&c<=48){icon="🌫️";est="Niebla"}
@@ -197,8 +242,14 @@ async function cargarClima(){
     if(c>=80&&c<=82){icon="🌧️";est="Chaparrones"}
     if(c>=95){icon="⛈️";est="Tormenta"}
 
-    document.getElementById("clima").textContent =
+    document.getElementById("clima").textContent=
       `${icon} ${ip.city} – ${t}°C – ${est}`;
+  }catch{
+    document.getElementById("clima").textContent="Clima no disponible";
+  }
+}
+cargarClima();
+</script>
 
-  } catch {
-    document.getElement
+</body>
+</html>
