@@ -1,5 +1,5 @@
 {
-  "name": "Radio Cannafest",
+  "name": "RADIO\nCANNAFEST",
   "short_name": "Radio Cannafest",
   "start_url": "/",
   "display": "standalone",
@@ -9,12 +9,12 @@
     {
       "src": "https://iili.io/fINvS3l.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
       "src": "https://iili.io/fINvS3l.jpg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpeg"
     }
   ]
 }
