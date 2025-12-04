@@ -25,31 +25,39 @@ body{
   overflow-x:hidden;
 }
 
-/* TOP INFO */
+/* TOP INFO (compactado) */
 .top-info{
-  max-width:600px;margin:10px auto;
-  padding:15px 20px;background:rgba(0,0,0,.6);
-  border-radius:15px;box-shadow:0 0 20px #00ff88;
+  max-width:500px;
+  margin:5px auto 15px;
+  padding:8px 15px; /* MÁS CHICO */
+  background:rgba(0,0,0,.55);
+  border-radius:12px;
+  box-shadow:0 0 10px rgba(0,255,150,0.40);
 }
-.clima-line{font-size:1.1em;color:#00ff99;text-shadow:0 0 10px #00ff99;}
-.hora-line{font-size:1em;color:#fff;opacity:.85}
+.clima-line{font-size:0.95em;color:#00ff99;text-shadow:0 0 6px #00ff99;}
+.hora-line{font-size:0.9em;color:#fff;opacity:.85}
 
-/* LOGO NUEVO + NEÓN MULTICOLOR */
+/* LOGO */
 .logo{
-  width:240px;margin:10px auto;display:block;
+  width:260px;
+  margin:10px auto 0; /* MENOS ESPACIO */
+  display:block;
   animation:logoNeon 3s infinite ease-in-out;
 }
 @keyframes logoNeon{
-  0%{filter:drop-shadow(0 0 12px #ffff33)}
-  33%{filter:drop-shadow(0 0 14px #ff3333)}
-  66%{filter:drop-shadow(0 0 14px #22ff22)}
-  100%{filter:drop-shadow(0 0 12px #ffff33)}
+  0%{filter:drop-shadow(0 0 10px #ffff33)}
+  33%{filter:drop-shadow(0 0 12px #ff3333)}
+  66%{filter:drop-shadow(0 0 12px #22ff22)}
+  100%{filter:drop-shadow(0 0 10px #ffff33)}
 }
 
-/* TÍTULO */
+/* TÍTULO (subido bien pegado) */
 .title{
-  font-size:2.8em;font-weight:700;
-  color:#00ffcc;text-shadow:0 0 20px #00ff88,0 0 40px #00ffaa;
+  font-size:2.2em;
+  font-weight:600;
+  margin-top:3px; /* PEGADO AL LOGO */
+  color:#00ffcc;
+  text-shadow:0 0 12px #00ff88,0 0 22px #00ffaa;
 }
 
 /* EN VIVO */
@@ -58,7 +66,7 @@ body{
   background:rgba(255,0,0,.25);border:1px solid #ff0033;
   padding:6px 18px;border-radius:25px;
   color:#ff3355;font-weight:700;margin:10px auto;
-  box-shadow:0 0 12px #ff0033;
+  box-shadow:0 0 10px #ff0033;
 }
 .en-vivo .dot{
   width:10px;height:10px;border-radius:50%;background:#ff0033;
@@ -72,13 +80,16 @@ body{
 
 /* CAJA RADIO */
 .radio-box{
-  background:rgba(0,0,0,.75);padding:40px 30px;
-  border-radius:25px;max-width:650px;margin:30px auto;
-  box-shadow:0 0 30px #00ff99;
-  border:2px solid rgba(0,255,150,0.4);
+  background:rgba(0,0,0,.70);
+  padding:35px 28px;
+  border-radius:22px;
+  max-width:650px;
+  margin:25px auto;
+  box-shadow:0 0 18px rgba(0,255,150,0.30);
+  border:2px solid rgba(0,255,150,0.25);
 }
 
-/* BOTÓN PLAY */
+/* BOTONES */
 .play-btn{
   margin-top:20px;
   background:linear-gradient(135deg,#00ff88,#00cc66);
@@ -86,12 +97,11 @@ body{
   border:none;border-radius:50px;
   font-size:1.3em;
   color:#000;font-weight:600;
-  box-shadow:0 0 15px #00ff88;
+  box-shadow:0 0 12px #00ff88;
   cursor:pointer;
 }
 .play-btn:hover{transform:scale(1.08)}
 
-/* BOTÓN COMPARTIR */
 .share-btn{
   margin-top:15px;
   background:linear-gradient(135deg,#00ccff,#0088ff);
@@ -99,19 +109,19 @@ body{
   border:none;border-radius:50px;
   font-size:1.1em;
   color:#fff;font-weight:600;
-  box-shadow:0 0 15px #00aaff;
+  box-shadow:0 0 12px #00aaff;
   cursor:pointer;
 }
 .share-btn:hover{transform:scale(1.08)}
 
 /* INSTAGRAM */
 .insta-box{
-  margin-top:50px;
+  margin-top:45px;
   padding:25px 20px;
   border-radius:20px;
   max-width:600px;
   background:rgba(0,0,0,.8);
-  box-shadow:0 0 20px #ff00aa;
+  box-shadow:0 0 18px #ff00aa;
   margin-left:auto;
   margin-right:auto;
   text-align:center;
@@ -120,7 +130,6 @@ body{
   font-size:1.8em;
   color:#ff00aa;
   margin-bottom:10px;
-  text-align:center;
 }
 .insta-link{
   color:#fff;
@@ -138,9 +147,9 @@ body{
 
 /* FOOTER */
 .footer-ciborg{
-  margin-top:60px;
+  margin-top:55px;
   padding:12px 0;
-  background:rgba(0,0,0,0.65);
+  background:rgba(0,0,0,0.55);
   border-radius:10px;
   color:#00ffcc;
   font-weight:600;
@@ -151,42 +160,30 @@ body{
   max-width:600px;
   margin-left:auto;
   margin-right:auto;
-  box-shadow:0 0 18px #00ffaa;
+  box-shadow:0 0 12px #00ffaa;
 }
 
-/* ------------------ RESPONSIVE ------------------ */
-
-/* Móviles */
+/* RESPONSIVE */
 @media(max-width:480px){
-  .title{font-size:2em}
-  .logo{width:180px}
-  .radio-box{padding:30px 20px}
-  .play-btn{font-size:1.1em;padding:12px 30px}
-  .share-btn{font-size:1em;padding:10px 28px}
-  .insta-title{font-size:1.5em}
+  .logo{width:220px}
+  .title{font-size:1.7em;margin-top:6px}
 }
-
-/* Tablets */
 @media(max-width:800px){
-  .title{font-size:2.3em}
-  .logo{width:200px}
-  .radio-box{padding:35px 25px}
+  .logo{width:240px}
 }
-
-/* Pantallas grandes */
 @media(min-width:1200px){
-  body{padding:40px}
-  .radio-box{max-width:750px}
-  .title{font-size:3.2em}
-  .logo{width:260px}
+  .logo{width:300px}
+  .title{font-size:2.4em;margin-top:4px}
 }
-
+@media(min-width:1600px){
+  .logo{width:330px}
+}
 </style>
 </head>
 
 <body>
 
-<!-- TOP INFO -->
+<!-- TOP INFO COMPACTADO -->
 <div class="top-info">
   <div class="clima-line" id="clima">Cargando clima...</div>
   <div class="hora-line" id="hora"></div>
@@ -197,7 +194,9 @@ body{
 <div class="radio-box">
 
   <img src="https://iili.io/fIqhMwQ.webp" class="logo">
-  <h1 class="title"></h1>
+
+  <!-- TÍTULO PEGADO AL LOGO -->
+  <h1 class="title">Música que fluye. Vibra que conecta.</h1>
 
   <div class="en-vivo"><div class="dot"></div> EN VIVO</div>
 
@@ -232,51 +231,46 @@ body{
 </a>
 
 <script>
-/* PLAYER */
-const audio = document.getElementById("radioPlayer");
-const btn = document.getElementById("playBtn");
-const statusEl = document.getElementById("playerStatus");
-let playing = false;
+const audio=document.getElementById("radioPlayer");
+const btn=document.getElementById("playBtn");
+const statusEl=document.getElementById("playerStatus");
+let playing=false;
 
 function toggleRadio(){
   if(!playing){
     audio.load();
-    audio.play()
-    .then(()=>{
-      playing = true;
-      btn.textContent = "⏸ Detener radio";
-      statusEl.textContent = "🎧 Reproduciendo...";
-    })
-    .catch(()=>{
-      statusEl.textContent = "⚠ Tocá nuevamente para iniciar";
+    audio.play().then(()=>{
+      playing=true;
+      btn.textContent="⏸ Detener radio";
+      statusEl.textContent="🎧 Reproduciendo...";
+    }).catch(()=>{
+      statusEl.textContent="⚠ Tocá nuevamente para iniciar";
     });
   } else {
     audio.pause();
-    playing = false;
-    btn.textContent = "▶ Escuchar radio";
-    statusEl.textContent = "⏸ La radio está detenida.";
+    playing=false;
+    btn.textContent="▶ Escuchar radio";
+    statusEl.textContent="⏸ La radio está detenida.";
   }
 }
 
-/* COMPARTIR */
 function shareRadio(){
-  const text = "🎧 Escuchá Radio Cannafest: música, difusión y buena onda!";
-  const url = "https://radio-cannafest.onrender.com";
+  const text="🎧 Escuchá Radio Cannafest: música, difusión y buena onda!";
+  const url="https://radio-cannafest.onrender.com";
 
   if(navigator.share){
-    navigator.share({title:"Radio Cannafest", text, url});
+    navigator.share({title:"Radio Cannafest",text,url});
   } else {
-    alert("Copiá y compartí:\n" + text + "\n" + url);
+    alert("Copiá y compartí:\n"+text+"\n"+url);
   }
 }
 
-/* HORA + CLIMA */
 function actHora(){
   let n=new Date();
   document.getElementById("hora").textContent=n.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
   document.getElementById("fecha").textContent=n.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"});
 }
-setInterval(actHora,1000); actHora();
+setInterval(actHora,1000);actHora();
 
 async function cargarClima(){
   try{
@@ -293,8 +287,7 @@ async function cargarClima(){
     if(c>=80&&c<=82){icon="🌧️";est="Chaparrones"}
     if(c>=95){icon="⛈️";est="Tormenta"}
 
-    document.getElementById("clima").textContent=
-      `${icon} ${ip.city} – ${t}°C – ${est}`;
+    document.getElementById("clima").textContent=`${icon} ${ip.city} – ${t}°C – ${est}`;
   }catch{
     document.getElementById("clima").textContent="Clima no disponible";
   }
