@@ -5,12 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🎧 RADIO CANNAFEST | En Vivo 24hs</title>
 
+<!-- ÍCONO Y MANIFEST PARA PWA -->
+<link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="https://iili.io/fIqhMwQ.webp">
+<link rel="apple-touch-icon" href="https://iili.io/fIqhMwQ.webp">
+<meta name="theme-color" content="#00ff88">
 
 <meta property="og:title" content="RADIO CANNAFEST | En Vivo 24hs">
 <meta property="og:description" content="Música, cultura y vibra 420 en vivo.">
 <meta property="og:image" content="https://iili.io/fI0exVa.jpg">
-<meta name="theme-color" content="#00ff88">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght:300;400;600&family=Montserrat:wght:600;700&display=swap" rel="stylesheet">
 
@@ -25,11 +28,11 @@ body{
   overflow-x:hidden;
 }
 
-/* TOP INFO (compactado) */
+/* TOP INFO */
 .top-info{
   max-width:500px;
   margin:5px auto 15px;
-  padding:8px 15px; /* MÁS CHICO */
+  padding:8px 15px;
   background:rgba(0,0,0,.55);
   border-radius:12px;
   box-shadow:0 0 10px rgba(0,255,150,0.40);
@@ -40,7 +43,7 @@ body{
 /* LOGO */
 .logo{
   width:260px;
-  margin:10px auto 0; /* MENOS ESPACIO */
+  margin:10px auto 0;
   display:block;
   animation:logoNeon 3s infinite ease-in-out;
 }
@@ -51,11 +54,11 @@ body{
   100%{filter:drop-shadow(0 0 10px #ffff33)}
 }
 
-/* TÍTULO (subido bien pegado) */
+/* TÍTULO */
 .title{
   font-size:2.2em;
   font-weight:600;
-  margin-top:3px; /* PEGADO AL LOGO */
+  margin-top:3px;
   color:#00ffcc;
   text-shadow:0 0 12px #00ff88,0 0 22px #00ffaa;
 }
@@ -183,7 +186,7 @@ body{
 
 <body>
 
-<!-- TOP INFO COMPACTADO -->
+<!-- TOP INFO -->
 <div class="top-info">
   <div class="clima-line" id="clima">Cargando clima...</div>
   <div class="hora-line" id="hora"></div>
@@ -195,7 +198,6 @@ body{
 
   <img src="https://iili.io/fIqhMwQ.webp" class="logo">
 
-  <!-- TÍTULO PEGADO AL LOGO -->
   <h1 class="title">Música que fluye. Vibra que conecta.</h1>
 
   <div class="en-vivo"><div class="dot"></div> EN VIVO</div>
@@ -214,6 +216,22 @@ body{
     ⏸ La radio está detenida.
   </div>
 
+  <!-- BOTÓN PARA INSTALAR LA APP -->
+  <button id="installBtn" style="
+    background:#00ff88;
+    color:#000;
+    padding:12px 25px;
+    border-radius:30px;
+    font-size:1.1em;
+    border:none;
+    margin-top:25px;
+    cursor:pointer;
+    display:none;
+    box-shadow:0 0 12px #00ff88;
+  ">
+  📲 Instalar Radio Cannafest
+  </button>
+
 </div>
 
 <!-- INSTAGRAM -->
@@ -230,7 +248,32 @@ body{
   Creado y diseñado por Ciborg347™
 </a>
 
+<!-- SCRIPTS -->
 <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js");
+}
+
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = "inline-block";
+});
+
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+  const choice = await deferredPrompt.userChoice;
+
+  deferredPrompt = null;
+  installBtn.style.display = "none";
+});
+
+/* RADIO */
 const audio=document.getElementById("radioPlayer");
 const btn=document.getElementById("playBtn");
 const statusEl=document.getElementById("playerStatus");
