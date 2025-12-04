@@ -1,6 +1,6 @@
 {
   "name": "Radio Cannafest",
-  "short_name": "Radio CannaFest",
+  "short_name": "Radio Cannafest",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
