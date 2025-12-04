@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎧 RADIO CANNAFEST™ | En Vivo 24hs</title>
+<title>🎧 RADIO CANNAFEST | En Vivo 24hs</title>
 
 <link rel="icon" type="image/png" href="https://iili.io/fIqhMwQ.webp">
 
-<meta property="og:title" content="RADIO CANNAFEST™ | En Vivo 24hs">
+<meta property="og:title" content="RADIO CANNAFEST | En Vivo 24hs">
 <meta property="og:description" content="Música, cultura y vibra 420 en vivo.">
 <meta property="og:image" content="https://iili.io/fIqhMwQ.webp">
 <meta name="theme-color" content="#00ff88">
@@ -120,13 +120,22 @@ body{
   filter:drop-shadow(0 0 8px #ff00aa);
 }
 
-/* FOOTER LINK NUEVO */
+/* FOOTER DESTACADO */
 .footer-ciborg{
   margin-top:60px;
-  color:#00ff88;
-  font-size:1.1em;
+  padding:12px 0;
+  background:rgba(0,0,0,0.65);
+  border-radius:10px;
+  color:#00ffcc;
+  font-weight:600;
+  font-size:1.15em;
   text-decoration:none;
   display:block;
+  width:100%;
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow:0 0 18px #00ffaa;
 }
 </style>
 </head>
@@ -144,7 +153,7 @@ body{
 <div class="radio-box">
 
   <img src="https://iili.io/fIqhMwQ.webp" class="logo">
-  <h1 class="title">RADIO CANNAFEST™</h1>
+  <h1 class="title">RADIO CANNAFEST</h1>
 
   <div class="en-vivo"><div class="dot"></div> EN VIVO</div>
 
@@ -152,13 +161,10 @@ body{
     Música – Cultura – Vibra – 24hs 🎵
   </p>
 
-  <!-- AUDIO REAL FASTCAST4U -->
   <audio id="radioPlayer" preload="none" src="https://usa15.fastcast4u.com/proxy/ciborg347?mp=/1"></audio>
 
-  <!-- BOTÓN DE PLAY -->
   <button class="play-btn" id="playBtn" onclick="toggleRadio()">▶ Escuchar radio</button>
 
-  <!-- BOTÓN COMPARTIR -->
   <button class="share-btn" onclick="shareRadio()">📲 Compartir Radio Cannafest</button>
 
   <div id="playerStatus" style="color:#fff;margin-top:10px;opacity:.9;">
@@ -176,13 +182,13 @@ body{
   </a>
 </div>
 
-<!-- FOOTER NUEVO -->
+<!-- FOOTER -->
 <a class="footer-ciborg" href="https://ciborg347.onrender.com" target="_blank">
   Creado y diseñado por Ciborg347™
 </a>
 
 <script>
-/* PLAYER REAL */
+/* PLAYER */
 const audio = document.getElementById("radioPlayer");
 const btn = document.getElementById("playBtn");
 const statusEl = document.getElementById("playerStatus");
@@ -210,12 +216,13 @@ function toggleRadio(){
 
 /* COMPARTIR */
 function shareRadio(){
+  const text = "🎧 Escuchá Radio Cannafest: música, difusión y buena onda!";
   const url = "https://ciborg347.onrender.com";
-  const text = "🎧 Escuchá Radio CANNAFEST™ en vivo 24hs!";
+
   if(navigator.share){
-    navigator.share({title:"Radio Cannafest",text, url});
+    navigator.share({title:"Radio Cannafest", text, url});
   } else {
-    alert("Copiá y compartí:\n" + url);
+    alert("Copiá y compartí:\n" + text + "\n" + url);
   }
 }
 
